@@ -26,9 +26,9 @@ def switch_dev_mode(device: str, mode: str) -> bool:
         raise ValueError(f"Only modes 'monitor' and 'managed' are supported, not '{mode}'")
 
     try:
-        os.system(f"ip link set {device} down")
-        os.system(f"iwconfig {device} mode {mode}")
-        os.system(f"ip link set {device} up")
+        os.system(f"sudo ifconfig {device} down")
+        os.system(f"sudo iwconfig {device} mode {mode}")
+        os.system(f"sudo ip link set {device} up")
         return True
     except:
         # switch failed, return false
